@@ -10,9 +10,9 @@ WORKDIR /app
 EXPOSE 8080
 COPY --from=builder /app .
 # This env is going to be handled in configmap in k8
-# ENV REDIS_HOST="redis" \
-#     CATALOGUE_HOST="catalogue" \
-#     CATALOGUE_PORT = 8080
+ENV REDIS_HOST="redis" \
+    CATALOGUE_HOST="catalogue" \
+    CATALOGUE_PORT="8080"
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 RUN chown -R roboshop:roboshop /app
 USER roboshop
