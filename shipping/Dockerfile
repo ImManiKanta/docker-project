@@ -9,6 +9,8 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 EXPOSE 8080
 COPY --from=buillder /app/shipping.jar .
+ENV CART_ENDPOINT="cart:8080" \
+    DB_HOST="mysql"
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 RUN chown -R roboshop:roboshop /app
 USER roboshop
